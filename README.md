@@ -1,6 +1,6 @@
 ## Running
 
-Start the Rails 6 backend first on port 4000.
+Start the [Rails 6 backend](https://github.com/iq9/users-backend-rails) first on port 4000.
 
 ```bash
 $ bin/rails s --port 4000
