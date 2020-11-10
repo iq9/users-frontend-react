@@ -1,0 +1,12 @@
+{
+  "app": {},
+  "users": [],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Example Post 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "category": "1"
+    }
+  ]
+}
