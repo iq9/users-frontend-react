@@ -23,7 +23,7 @@ $ npm run start
 - [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 - [Redux Thunk](https://github.com/reduxjs/redux-thunk)
 
-### Tests
+## Tests
 
 Basic Jest Suite is functional.
 
@@ -32,7 +32,7 @@ $ npm run test
 ```
 
 - [Enzyme](https://airbnb.io/enzyme/)
-- [Jest](http://jest.io)
+- [Jest](https://jestjs.io/)
 
 ## Structure
 
