@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import { CheckCircleTwoTone } from '@ant-design/icons';
-import Layout from "../../layouts/default";
-import Listable from "../../components/Listable";
-import ModalForm from "./Form";
+import Layout from '../../layouts/default';
+import Listable from '../../components/Listable';
+import Sorter from '../../../utils/sorter';
+import ModalForm from './Form';
 
 class View extends Component {
   componentDidMount() {
@@ -24,7 +25,7 @@ class View extends Component {
               defaultSortOrder: 'ascend',
               sortDirections: ['descend', 'ascend'],
               sorter: {
-                compare: (a, b) => a.name - b.name,
+                compare: Sorter.DEFAULT,
                 multiple: 1,
               },
             },
@@ -33,20 +34,27 @@ class View extends Component {
               title: 'E-Mail',
               dataIndex: 'email',
               sorter: {
-                compare: (a, b) => a.email - b.email,
+                compare: Sorter.DEFAULT,
+                multiple: 2,
               },
             },
 
             {
               title: 'Title',
               dataIndex: 'title',
-              key: 'title'
+              sorter: {
+                compare: Sorter.DEFAULT,
+                multiple: 3,
+              },
             },
 
             {
               title: 'Phone',
               dataIndex: 'phone',
-              key: 'phone'
+              sorter: {
+                compare: Sorter.DEFAULT,
+                multiple: 4,
+              },
             },
 
             {

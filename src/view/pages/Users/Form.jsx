@@ -41,7 +41,7 @@ const ModalForm = ({ form, fields }) => {
         {getFieldDecorator('status', {
           valuePropName: 'checked',
           setFieldsValue: fields.status,
-          initialValue: fields.status,
+          initialValue: fields.status, // For some reason, have to set both of these.
           rules: [{ required: false }],
         })(<Checkbox placeholder="Status" />)}
       </Form.Item>
