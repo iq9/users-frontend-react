@@ -68,7 +68,7 @@ class Listable extends PureComponent {
     return [
       ...columns,
       {
-        title: 'Action',
+        title: 'Actions',
         key: 'action',
         render: (text, record, index) => (
           <span key={record.id}>

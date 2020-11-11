@@ -3,7 +3,8 @@ import Layout from '../layouts/default';
 
 export default () => (
   <Layout>
-    <h2>Dahsboard</h2>
-    <h4>Are you ready to create awesome applications?</h4>
+    <h2>Dashboard</h2>
+
+    <h3>Russ Brooks&rsquo;s awesome React app for Trainual.</h3>
   </Layout>
 );
