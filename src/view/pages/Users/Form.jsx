@@ -10,36 +10,39 @@ const ModalForm = ({ form, fields }) => {
     <Form>
 
       <Form.Item label="Name">
-        {getFieldDecorator("name", {
+        {getFieldDecorator('name', {
           initialValue: fields.name,
-          rules: [{ required: true }]
+          rules: [{ required: true }],
         })(<Input placeholder="Name" />)}
       </Form.Item>
 
       <Form.Item label="E-Mail">
-        {getFieldDecorator("email", {
+        {getFieldDecorator('email', {
           initialValue: fields.email,
-          rules: [{ required: true }]
+          rules: [{ required: true }],
         })(<Input placeholder="E-Mail" />)}
       </Form.Item>
 
       <Form.Item label="Title">
-        {getFieldDecorator("title", {
+        {getFieldDecorator('title', {
           initialValue: fields.title,
-          rules: [{ required: true }]
+          rules: [{ required: true }],
         })(<Input placeholder="Title" />)}
       </Form.Item>
 
       <Form.Item label="Phone">
-        {getFieldDecorator("phone", {
+        {getFieldDecorator('phone', {
           initialValue: fields.phone,
-          rules: [{ required: true }]
+          rules: [{ required: true }],
         })(<Input placeholder="Phone" />)}
       </Form.Item>
 
       <Form.Item label="Status">
-        {getFieldDecorator("status", {
+        {getFieldDecorator('status', {
+          valuePropName: 'checked',
+          setFieldsValue: fields.status,
           initialValue: fields.status,
+          rules: [{ required: false }],
         })(<Checkbox placeholder="Status" />)}
       </Form.Item>
 

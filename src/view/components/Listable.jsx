@@ -104,10 +104,6 @@ class Listable extends PureComponent {
     return currentAction === CREATING ? 'Create' : 'Edit';
   };
 
-   onChange = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra);
-  }
-
   render() {
     const { currentAction, formFields } = this.state;
     const { data, Form } = this.props;
@@ -118,7 +114,6 @@ class Listable extends PureComponent {
           rowKey={record => record.id}
           dataSource={data}
           columns={this.getColumns()}
-          onChange={this.onChange()}
           title={() => (
             <Button
               type="primary"
