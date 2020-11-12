@@ -1,20 +1,20 @@
-import update from "immutability-helper";
-import * as Types from "./types";
-import * as actions from "./actions";
+import update from 'immutability-helper'
+import * as Types from './types'
+import * as actions from './actions'
 
 const INITIAL_STATE = {
   list: []
-};
+}
 
 export default (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case Types.FETCH:
       return {
         list: action.payload
-      };
+      }
 
     case Types.CREATE:
-      return update(state, { list: { $push: [action.payload] } });
+      return update(state, { list: { $push: [action.payload] } })
 
     case Types.UPDATE:
       return update(state, {
@@ -29,16 +29,16 @@ export default (state = INITIAL_STATE, action = {}) => {
                   }
             )
         }
-      });
+      })
 
     case Types.REMOVE:
       return update(state, {
         list: { $apply: list => list.filter(item => item.id !== action.id) }
-      });
+      })
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export { Types, actions };
+export { Types, actions }

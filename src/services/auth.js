@@ -2,14 +2,14 @@ const authService = {
   isAuthenticated: true,
 
   authenticate(cb) {
-    this.isAuthenticated = true;
-    cb();
+    this.isAuthenticated = true
+    cb()
   },
 
   signout(cb) {
-    this.isAuthenticated = false;
-    cb();
+    this.isAuthenticated = false
+    cb()
   },
 };
 
-export default authService;
+export default authService

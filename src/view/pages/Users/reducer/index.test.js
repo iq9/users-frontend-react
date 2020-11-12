@@ -1,5 +1,5 @@
-import * as Types from './types';
-import reducer from './';
+import * as Types from './types'
+import reducer from './'
 
 describe('Reducers', () => {
   const defaultState = {
@@ -29,7 +29,7 @@ describe('Reducers', () => {
         status: true,
       },
     ],
-  };
+  }
 
   it('returns all', () => {
     const payload = [
@@ -57,7 +57,7 @@ describe('Reducers', () => {
         phone: '215-555-1000',
         status: true,
       },
-    ];
+    ]
 
     expect(
       reducer(
@@ -67,20 +67,20 @@ describe('Reducers', () => {
           payload,
         }
       )
-    ).toEqual(defaultState);
-  });
+    ).toEqual(defaultState)
+  })
 
   it('returns state with the new one', () => {
-    const payload = { name: 'Example 4', status: true };
+    const payload = { name: 'Example 4', status: true }
 
     const result = reducer(defaultState, {
       type: Types.CREATE,
       payload,
-    });
+    })
 
-    expect(result.list.length).toEqual(4);
-    expect(result.list[3]).toEqual(expect.objectContaining(payload));
-  });
+    expect(result.list.length).toEqual(4)
+    expect(result.list[3]).toEqual(expect.objectContaining(payload))
+  })
 
   it('returns state with the updated one', () => {
     const newState = {
@@ -110,15 +110,15 @@ describe('Reducers', () => {
           status: true,
         },
       ],
-    };
+    }
 
     expect(
       reducer(defaultState, {
         type: Types.UPDATE,
         payload: { id: 1, name: 'Russ Brooks Updated' },
       })
-    ).toEqual(newState);
-  });
+    ).toEqual(newState)
+  })
 
   it('returns state without the removed one', () => {
     const newState = {
@@ -140,13 +140,13 @@ describe('Reducers', () => {
           status: true,
         },
       ],
-    };
+    }
 
     expect(
       reducer(defaultState, {
         type: Types.REMOVE,
         id: 1,
       })
-    ).toEqual(newState);
-  });
-});
+    ).toEqual(newState)
+  })
+})

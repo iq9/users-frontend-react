@@ -19,7 +19,7 @@ class FormModal extends PureComponent {
   }
 
   render() {
-    const { title, visible, handleCancel, form, children } = this.props;
+    const { title, visible, handleCancel, form, children } = this.props
 
     return (
       <Modal
@@ -40,7 +40,7 @@ class FormModal extends PureComponent {
       >
         {React.cloneElement(children, { form })}
       </Modal>
-    );
+    )
   }
 }
 

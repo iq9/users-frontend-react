@@ -13,7 +13,7 @@ const config = {
 
 const dev = {
   ...config,
-};
+}
 
 const prod = {
   ...config,
@@ -21,6 +21,6 @@ const prod = {
     ...config.api,
     baseUrl: 'https://your-domain.com/api',
   },
-};
+}
 
-export default (process.env.REACT_APP_STAGE === 'production' ? prod : dev);
+export default (process.env.REACT_APP_STAGE === 'production' ? prod : dev)

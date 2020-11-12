@@ -1,5 +1,5 @@
-import React from 'react';
-import Layout from '../layouts/default';
+import React from 'react'
+import Layout from '../layouts/default'
 
 export default () => (
   <Layout>
@@ -7,4 +7,4 @@ export default () => (
 
     <h3>Russ Brooks&rsquo;s awesome React app for Trainual.</h3>
   </Layout>
-);
+)

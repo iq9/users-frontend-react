@@ -1,34 +1,34 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { PureComponent } from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { Redirect } from 'react-router-dom';
-import authService from '../../../services/auth';
+import React, { PureComponent } from 'react'
+import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { Redirect } from 'react-router-dom'
+import authService from '../../../services/auth'
 
-import './login.css';
+import './login.css'
 
 class Login extends PureComponent {
   state = {
     redirectToReferrer: false,
-  };
+  }
 
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
 
     this.props.form.validateFields(err => {
-      if (err) return;
+      if (err) return
 
       authService.authenticate(() => {
-        this.setState({ redirectToReferrer: true });
-      });
-    });
-  };
+        this.setState({ redirectToReferrer: true })
+      })
+    })
+  }
 
   render() {
-    let { from } = this.props.location.state || { from: { pathname: '/' } };
-    let { redirectToReferrer } = this.state;
-    const { getFieldDecorator } = this.props.form;
+    let { from } = this.props.location.state || { from: { pathname: '/' } }
+    let { redirectToReferrer } = this.state
+    const { getFieldDecorator } = this.props.form
 
-    if (redirectToReferrer) return <Redirect to={from} />;
+    if (redirectToReferrer) return <Redirect to={from} />
 
     return (
       <div className="login-form-container">
@@ -85,8 +85,8 @@ class Login extends PureComponent {
           </Form.Item>
         </Form>
       </div>
-    );
+    )
   }
 }
 
-export default Form.create({ name: 'normal_login' })(Login);
+export default Form.create({ name: 'normal_login' })(Login)

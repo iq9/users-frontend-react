@@ -1,15 +1,15 @@
 const getAllReducers = (pages = {}) => {
-  let result = {};
+  let result = {}
 
   Object.keys(pages).forEach(pageName => {
-    const page = pages[pageName];
+    const page = pages[pageName]
 
     if (page.hasOwnProperty('reducer')) {
-      result = { ...result, [pageName]: page.reducer };
+      result = { ...result, [pageName]: page.reducer }
     }
-  });
+  })
 
-  return result;
-};
+  return result
+}
 
-export default getAllReducers;
+export default getAllReducers

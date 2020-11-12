@@ -1,19 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
-import { Link, withRouter } from 'react-router-dom';
-import authService from '../../../services/auth';
-import 'antd/dist/antd.css';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import { Layout, Menu } from 'antd'
+import { Link, withRouter } from 'react-router-dom'
+import authService from '../../../services/auth'
+import 'antd/dist/antd.css'
+import logo from './logo.svg'
 
-import './global.css';
+import './global.css'
 
 const AuthLink = withRouter(({ history }) =>
   authService.isAuthenticated ? (
     <a
       href="#"
       onClick={() => {
-        authService.signout(() => history.push('/'));
+        authService.signout(() => history.push('/'))
       }}
     >
       Sign out
@@ -21,11 +21,11 @@ const AuthLink = withRouter(({ history }) =>
   ) : (
     <Link to="/auth/login">Login</Link>
   )
-);
+)
 
 class Default extends Component {
   render() {
-    const { Header, Content, Footer } = Layout;
+    const { Header, Content, Footer } = Layout
 
     return (
       <div className="App">
@@ -61,8 +61,8 @@ class Default extends Component {
           <Footer style={{ textAlign: 'center' }}>©2020 Russ Brooks</Footer>
         </Layout>
       </div>
-    );
+    )
   }
 }
 
-export default Default;
+export default Default
