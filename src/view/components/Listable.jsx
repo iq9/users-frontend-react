@@ -79,7 +79,7 @@ class Listable extends PureComponent {
         title: 'Actions',
         key: 'action',
         render: (text, record, index) => (
-          <span key={record.id}>
+          <span style={{'white-space': 'nowrap'}}>
             <Button
               size="small"
               title="edit"
