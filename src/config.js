@@ -1,7 +1,7 @@
 const config = {
   name: 'my-app',
   api: {
-    baseUrl: 'http://localhost:4000',
+    baseUrl: 'https://users-backend-rails.herokuapp.com',
     auth: {
       namespace: '/auth',
       login: '/login',
