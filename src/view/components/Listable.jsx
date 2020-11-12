@@ -138,6 +138,7 @@ class Listable extends PureComponent {
           rowKey={record => record.id}
           columns={this.getColumns()}
           dataSource={filterTable == null ? data : filterTable}
+          pagination={{ pageSize: 25 }}
           title={() => (
             <div>
               <Button
