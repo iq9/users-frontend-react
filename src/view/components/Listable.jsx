@@ -1,69 +1,77 @@
-import React, { PureComponent } from 'react';
-import { Icon, Table, Button, Divider, Popconfirm, message } from 'antd';
-import ModalForm from './ModalForm';
+import React, { PureComponent } from 'react'
+import { Icon, Input, Table, Button, Divider, Popconfirm, message } from 'antd'
+import ModalForm from './ModalForm'
 
 class Listable extends PureComponent {
   static ACTIONS = {
     CREATING: 'creating',
     EDITING: 'editing',
-  };
+  }
 
   state = {
     currentAction: null,
     formFields: {},
-  };
+  }
 
   openModal = (type, index) => {
-    const { data } = this.props;
+    const { data } = this.props
 
     this.setState({
       currentAction: type,
       formFields: index != null ? data[index] : {},
-    });
-  };
+    })
+  }
 
   closeModal = () => {
-    this.setState({ currentAction: null, formFields: {} });
-  };
+    this.setState({ currentAction: null, formFields: {} })
+  }
 
   closeModalAndSave = newFormFields => {
-    const { currentAction, formFields } = this.state;
+    const { currentAction, formFields } = this.state
 
     if (currentAction === Listable.ACTIONS.EDITING) {
-      this.onEdit({ ...formFields, ...newFormFields });
+      this.onEdit({ ...formFields, ...newFormFields })
     } else {
-      this.onCreate(newFormFields);
+      this.onCreate(newFormFields)
     }
 
-    this.closeModal();
-  };
+    this.closeModal()
+  }
 
   onCreate = data => {
-    const { handleCreate } = this.props;
+    const { handleCreate } = this.props
 
-    handleCreate(data);
-
-    setTimeout(() => message.success('User successfully created.'), 300);
-  };
+    handleCreate(data).then(res => {
+      message.success('User successfully created.')
+    }).catch(err => {
+      if (err.status === 422) {
+        message.error('ERROR: Email address already exists.')
+      }
+    })
+  }
 
   onEdit = data => {
-    const { handleEdit } = this.props;
+    const { handleEdit } = this.props
 
-    handleEdit(data);
-
-    setTimeout(() => message.success('User successfully edited.'), 300);
-  };
+    handleEdit(data).then(res => {
+      message.success('User successfully edited.')
+    }).catch(err => {
+      if (err.status === 422) {
+        message.error('ERROR: Email address already exists.')
+      }
+    })
+  }
 
   onRemove = id => {
-    const { handleRemove } = this.props;
+    const { handleRemove } = this.props
 
-    handleRemove(id);
+    handleRemove(id)
 
-    message.success('User successfully deleted.');
-  };
+    message.success('User successfully deleted.')
+  }
 
   getColumns = () => {
-    const { columns } = this.props;
+    const { columns } = this.props
 
     return [
       ...columns,
@@ -94,36 +102,60 @@ class Listable extends PureComponent {
           </span>
         ),
       },
-    ];
-  };
+    ]
+  }
 
   getModalTitle = () => {
-    const { CREATING } = Listable.ACTIONS;
-    const { currentAction } = this.state;
+    const { CREATING } = Listable.ACTIONS
+    const { currentAction } = this.state
 
-    return currentAction === CREATING ? 'Create' : 'Edit';
-  };
+    return currentAction === CREATING ? 'Create' : 'Edit'
+  }
+
+  search = keyword => {
+    const { data } = this.props
+    if (keyword.includes(' ')) keyword = keyword.split(' ')[0]
+    // Ignore multi-keyword searches for now. Not in spec.
+
+    const filterTable = data.filter(users =>
+      Object.keys(users).some(key =>
+        String(users[key])
+          .toLowerCase()
+          .includes(keyword.toLowerCase())
+      )
+    )
+
+    this.setState({ filterTable })
+  }
 
   render() {
-    const { currentAction, formFields } = this.state;
-    const { data, Form } = this.props;
+    const { currentAction, formFields, filterTable } = this.state
+    const { data, Form } = this.props
 
     return (
       <React.Fragment>
         <Table
           rowKey={record => record.id}
-          dataSource={data}
           columns={this.getColumns()}
+          dataSource={filterTable == null ? data : filterTable}
           title={() => (
-            <Button
-              type="primary"
-              onClick={() => this.openModal(Listable.ACTIONS.CREATING)}
-              title="Create user"
-              alt="create"
-            >
-              <Icon type="user-add" />
-              Create
-            </Button>
+            <div>
+              <Button
+                type="primary"
+                onClick={() => this.openModal(Listable.ACTIONS.CREATING)}
+                title="Create user"
+                alt="create"
+              >
+                <Icon type="user-add" />
+                Create
+              </Button>
+              <Input.Search
+                placeholder="Search..."
+                enterButton
+                onSearch={this.search}
+                style={{ margin: "0 0 10px 0", float: "right", width: "300px" }}
+              />
+            </div>
           )}
         />
         <ModalForm
@@ -135,8 +167,8 @@ class Listable extends PureComponent {
           <Form fields={formFields} />
         </ModalForm>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Listable;
+export default Listable

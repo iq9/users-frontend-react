@@ -24,5 +24,3 @@ const prod = {
 };
 
 export default (process.env.REACT_APP_STAGE === 'production' ? prod : dev);
-
-// name, email, title, phone, status

@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-// import { CheckCircleTwoTone } from '@ant-design/icons';
-import Layout from '../../layouts/default';
-import Listable from '../../components/Listable';
-import Sorter from '../../../utils/sorter';
-import ModalForm from './Form';
+import React, { Component } from 'react'
+import Layout from '../../layouts/default'
+import Listable from '../../components/Listable'
+import Sorter from '../../../utils/sorter'
+import ModalForm from './Form'
 
 class View extends Component {
   componentDidMount() {
-    this.props.fetch();
+    this.props.fetch()
   }
 
   render() {
-    const { users, create, update, remove } = this.props;
+    const { users, create, update, remove } = this.props
 
     return (
       <Layout>
@@ -76,8 +75,8 @@ class View extends Component {
           handleRemove={id => remove(id)}
         />
       </Layout>
-    );
+    )
   }
 }
 
-export default View;
+export default View

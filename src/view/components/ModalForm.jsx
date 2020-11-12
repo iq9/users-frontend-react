@@ -1,29 +1,22 @@
-import React, { PureComponent } from 'react';
-import { Icon, Modal, Form, Button } from 'antd';
+import React, { PureComponent } from 'react'
+import { Icon, Modal, Form, Button } from 'antd'
 
 class FormModal extends PureComponent {
   handleOnSubmit = () => {
-    const { handleOk, form } = this.props;
+    const { handleOk, form } = this.props
 
     form.validateFields((err, values) => {
-      console.log('*** validateFields');
-      console.log(err);
-      console.log(values);
-
       if (err) {
-        console.log('*******');
-        console.log(err);
-
-        return;
+        return
       }
 
-      form.resetFields();
+      form.resetFields()
 
       if (handleOk) {
-        handleOk(values);
+        handleOk(values)
       }
-    });
-  };
+    })
+  }
 
   render() {
     const { title, visible, handleCancel, form, children } = this.props;
@@ -51,4 +44,4 @@ class FormModal extends PureComponent {
   }
 }
 
-export default Form.create()(FormModal);
+export default Form.create()(FormModal)
