@@ -19,7 +19,7 @@ const prod = {
   ...config,
   api: {
     ...config.api,
-    baseUrl: 'https://your-domain.com/api',
+    baseUrl: 'https://users-backend-rails.herokuapp.com',
   },
 }
 
