@@ -1,6 +1,6 @@
-import getAllReducers from './getAllReducers';
+import getAllReducers from './getAllReducers'
 
-const noOp = () => {};
+const noOp = () => {}
 
 describe('getAllReducers', () => {
   it('returns reducers hash from pages', () => {
@@ -8,10 +8,10 @@ describe('getAllReducers', () => {
       pageA: { component: noOp, reducer: noOp },
       pageB: { component: noOp, reducer: noOp },
       pageC: { component: noOp },
-    };
+    }
 
-    const result = getAllReducers(pages);
+    const result = getAllReducers(pages)
 
-    expect(result).toEqual({ pageA: noOp, pageB: noOp });
-  });
-});
+    expect(result).toEqual({ pageA: noOp, pageB: noOp })
+  })
+})
